@@ -14,6 +14,7 @@
     --line:#E8EDF2;
     --muted:#6C87A3;
     --amber:#D68A3C;
+    --paper:#F4F1EA;
     --grid: rgba(232,237,242,0.06);
     --hair: rgba(232,237,242,0.16);
     --mono: 'IBM Plex Mono', monospace;
@@ -85,10 +86,24 @@
     font-family:var(--mono); font-size:12px; color:var(--muted);
     text-align:center; padding:20px; background:var(--navy-deep);
   }
+
+  /* image containers: sized per-image so nothing gets awkwardly cropped */
   .img-gallery{display:grid; grid-template-columns:repeat(2,1fr); gap:8px;}
   .img-gallery img{width:100%; height:100%; aspect-ratio:4/3; object-fit:cover; display:block; border:1px solid var(--hair); background:var(--navy-deep);}
   .img-gallery .span-2{grid-column:1/-1;}
+  .img-gallery img.wide{aspect-ratio:3/2;}
+  .img-gallery img.video{aspect-ratio:16/9;}
+  .img-gallery img.portrait{aspect-ratio:3/4;}
+  .img-gallery img.tall{aspect-ratio:9/16;}
+  .img-gallery img.square{aspect-ratio:1/1;}
+
   .single-img{width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border:1px solid var(--hair); background:var(--navy-deep);}
+  .single-img.portrait{aspect-ratio:3/4;}
+  .single-img.tall{aspect-ratio:9/16;}
+  .single-img.wide{aspect-ratio:3/2;}
+  .single-img.contain-light{aspect-ratio:4/3; object-fit:contain; background:var(--paper); padding:20px;}
+  .single-img.table{aspect-ratio:3/1; object-fit:contain; background:var(--paper); padding:18px;}
+  .single-img.logo{aspect-ratio:5/1.6; object-fit:contain; background:var(--paper); padding:22px;}
 
   .specs{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-bottom:18px;}
   .specs div{display:flex; gap:10px; padding:5px 0; border-bottom:1px solid var(--grid);}
@@ -140,14 +155,15 @@
   <nav class="index">
     <div class="label">SHEET INDEX</div>
     <div class="index-list">
-      <a href="#s01"><span class="num">01</span> ASME Battle Bots — Weapon System FEA <span class="status">COMPLETE</span></a>
-      <a href="#s02"><span class="num">02</span> IREC Structures — Spaceport America Cup <span class="status">FLOWN · RUD</span></a>
-      <a href="#s03"><span class="num">03</span> Level 1 High-Power Rocketry Certification <span class="status">CERT PENDING</span></a>
-      <a href="#s04"><span class="num">04</span> 5" FPV Drone — Independent Build <span class="status">IN PROGRESS</span></a>
-      <a href="#s05"><span class="num">05</span> ASME VTOL Aircraft <span class="status">SCOPING · LEAD</span></a>
-      <a href="#s06"><span class="num">06</span> West Campus Steam Plant — Brayton Cycle Analysis <span class="status">COURSEWORK</span></a>
-      <a href="#s07"><span class="num">07</span> Phone Stand — CAD Iteration <span class="status">COMPLETE</span></a>
-      <a href="#s08"><span class="num">08</span> Paradigm Consulting Engineers — MEP Internship <span class="status">COMPLETE</span></a>
+      <a href="#s01"><span class="num">01</span> ASME Battle Bots — Weapon System <span class="status">COMPLETE</span></a>
+      <a href="#s02"><span class="num">02</span> ASME VTOL Aircraft <span class="status">SCOPING · LEAD</span></a>
+      <a href="#s03"><span class="num">03</span> IREC Structures — Spaceport America Cup <span class="status">FLOWN · RUD</span></a>
+      <a href="#s04"><span class="num">04</span> Level 1 High-Power Rocketry Certification <span class="status">CERT PENDING</span></a>
+      <a href="#s05"><span class="num">05</span> Paradigm Consulting Engineers — MEP Internship <span class="status">COMPLETE</span></a>
+      <a href="#s06"><span class="num">06</span> 5" FPV Drone — Independent Build <span class="status">IN PROGRESS</span></a>
+      <a href="#s07"><span class="num">07</span> West Campus Steam Plant — Brayton Cycle Analysis <span class="status">COURSEWORK</span></a>
+      <a href="#s08"><span class="num">08</span> Phone Stand — CAD Iteration <span class="status">COMPLETE</span></a>
+      <a href="#s09"><span class="num">09</span> SOLIDWORKS Design Associate (CSWA) <span class="status">CERTIFIED</span></a>
     </div>
   </nav>
 
@@ -156,8 +172,8 @@
     <article class="sheet" id="s01">
       <div class="sheet-head">
         <div>
-          <div class="sheet-no">SHEET 01 / 08</div>
-          <h2>ASME Battle Bots — Weapon System FEA</h2>
+          <div class="sheet-no">SHEET 01 / 09</div>
+          <h2>ASME Battle Bots — Weapon System</h2>
         </div>
         <div class="status-tag">STATUS: COMPLETE</div>
       </div>
@@ -165,7 +181,7 @@
         <div class="img-gallery">
           <img src="img1_battlebots_fea.png" alt="FEA stress plot of the weapon blade assembly">
           <img src="img2_battlebots_event.png" alt="Battle Bots match at the competition showcase">
-          <img class="span-2" src="img3_battlebots_cad.png" alt="CAD render of the weapon blade assembly">
+          <img class="span-2 wide" src="img3_battlebots_cad.png" alt="CAD render of the weapon blade assembly">
         </div>
         <div>
           <div class="specs">
@@ -183,15 +199,37 @@
     <article class="sheet" id="s02">
       <div class="sheet-head">
         <div>
-          <div class="sheet-no">SHEET 02 / 08</div>
+          <div class="sheet-no">SHEET 02 / 09</div>
+          <h2>ASME VTOL Aircraft</h2>
+        </div>
+        <div class="status-tag">STATUS: SCOPING · LEAD</div>
+      </div>
+      <div class="sheet-grid">
+        <img class="single-img wide" src="img14_vtol_presentation.jpg" alt="Presenting the VTOL aircraft project to the ASME team">
+        <div>
+          <div class="specs">
+            <div><span class="k">ROLE</span><span class="v">Project lead, 2026–2027</span></div>
+            <div><span class="k">PHASE</span><span class="v">Scope and timeline definition</span></div>
+            <div><span class="k">BUDGET</span><span class="v">$1,500, across 4 subteams</span></div>
+          </div>
+          <p>Leading a team of engineering students to research, design, manufacture, and automate a VTOL aircraft for the 2026–2027 cycle — managing a $1,500 project budget and coordinating subteams spanning airframe, propulsion, avionics, and payload systems.</p>
+          <p>Current work is early-phase: defining project scope and building out the development timeline ahead of design work, alongside a personal drone build in preparation for the September start.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="sheet" id="s03">
+      <div class="sheet-head">
+        <div>
+          <div class="sheet-no">SHEET 03 / 09</div>
           <h2>IREC Structures — Spaceport America Cup</h2>
         </div>
         <div class="status-tag">STATUS: FLOWN · RUD</div>
       </div>
       <div class="sheet-grid">
         <div class="img-gallery">
-          <img src="img4_irec_rocket.png" alt="IREC rocket in flight showing the fin assembly">
-          <img src="img5_irec_parts.png" alt="Composite airframe components in the shop">
+          <img class="portrait" src="img4_irec_rocket.png" alt="IREC rocket in flight showing the fin assembly">
+          <img class="tall" src="img5_irec_parts.png" alt="Composite airframe components in the shop">
         </div>
         <div>
           <div class="specs">
@@ -205,16 +243,16 @@
       </div>
     </article>
 
-    <article class="sheet" id="s03">
+    <article class="sheet" id="s04">
       <div class="sheet-head">
         <div>
-          <div class="sheet-no">SHEET 03 / 08</div>
+          <div class="sheet-no">SHEET 04 / 09</div>
           <h2>Level 1 High-Power Rocketry Certification</h2>
         </div>
         <div class="status-tag">STATUS: CERT PENDING</div>
       </div>
       <div class="sheet-grid">
-        <img class="single-img" src="img6_l1_rocket.png" alt="Assembled Level 1 high-power rocket">
+        <img class="single-img tall" src="img6_l1_rocket.png" alt="Assembled Level 1 high-power rocket">
         <div>
           <div class="specs">
             <div><span class="k">SCOPE</span><span class="v">L1 high-power rocketry design/build</span></div>
@@ -227,18 +265,40 @@
       </div>
     </article>
 
-    <article class="sheet" id="s04">
+    <article class="sheet" id="s05">
       <div class="sheet-head">
         <div>
-          <div class="sheet-no">SHEET 04 / 08</div>
+          <div class="sheet-no">SHEET 05 / 09</div>
+          <h2>Paradigm Consulting Engineers — MEP Internship</h2>
+        </div>
+        <div class="status-tag">STATUS: COMPLETE</div>
+      </div>
+      <div class="sheet-grid">
+        <img class="single-img logo" src="img13_paradigm_logo.png" alt="Paradigm Consulting Engineers logo">
+        <div>
+          <div class="specs">
+            <div><span class="k">ROLE</span><span class="v">Mechanical Engineering Intern</span></div>
+            <div><span class="k">DATES</span><span class="v">May – August 2026</span></div>
+            <div><span class="k">TOOLS</span><span class="v">AutoCAD, Bluebeam</span></div>
+          </div>
+          <p>Produced complete HVAC construction documents in AutoCAD for over 30 commercial, residential, and educational projects (15,000–30,000 SF), including duct layouts and VAV/FPB schedules sized and verified against static pressure targets.</p>
+          <p>Performed CFM balancing for VAV/FPB arrays, ventilation load calculations per ASHRAE 62.1, and electrical panel load scheduling across multiple concurrent projects — collaborating directly with licensed engineers and contributing to MEP drawing set reviews in Bluebeam.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="sheet" id="s06">
+      <div class="sheet-head">
+        <div>
+          <div class="sheet-no">SHEET 06 / 09</div>
           <h2>5" FPV Drone — Independent Build</h2>
         </div>
         <div class="status-tag">STATUS: IN PROGRESS</div>
       </div>
       <div class="sheet-grid">
         <div class="img-gallery">
-          <img src="img7_fpv_closeup.png" alt="Close-up of the FPV quad's flight controller stack and camera">
-          <img src="img8_fpv_full.png" alt="Assembled FPV quad with transmitter and goggles">
+          <img class="video" src="img7_fpv_closeup.png" alt="Close-up of the FPV quad's flight controller stack and camera">
+          <img class="video" src="img8_fpv_full.png" alt="Assembled FPV quad with transmitter and goggles">
         </div>
         <div>
           <div class="specs">
@@ -251,38 +311,16 @@
       </div>
     </article>
 
-    <article class="sheet" id="s05">
+    <article class="sheet" id="s07">
       <div class="sheet-head">
         <div>
-          <div class="sheet-no">SHEET 05 / 08</div>
-          <h2>ASME VTOL Aircraft</h2>
-        </div>
-        <div class="status-tag">STATUS: SCOPING · LEAD</div>
-      </div>
-      <div class="sheet-grid">
-        <div class="img-slot">IMAGE — concept render / team photo<br>(drop photo here)</div>
-        <div>
-          <div class="specs">
-            <div><span class="k">ROLE</span><span class="v">Project lead, 2026–2027</span></div>
-            <div><span class="k">PHASE</span><span class="v">Scope and timeline definition</span></div>
-            <div><span class="k">BUDGET</span><span class="v">$1,500, across 4 subteams</span></div>
-          </div>
-          <p>Leading a team of engineering students to research, design, manufacture, and automate a VTOL aircraft for the 2026–2027 cycle — managing a $1,500 project budget and coordinating subteams spanning airframe, propulsion, avionics, and payload systems.</p>
-          <p>Current work is early-phase: defining project scope and building out the development timeline ahead of design work, alongside a personal drone build in preparation for the September start.</p>
-        </div>
-      </div>
-    </article>
-
-    <article class="sheet" id="s06">
-      <div class="sheet-head">
-        <div>
-          <div class="sheet-no">SHEET 06 / 08</div>
+          <div class="sheet-no">SHEET 07 / 09</div>
           <h2>West Campus Steam Plant — Brayton Cycle Analysis</h2>
         </div>
         <div class="status-tag">STATUS: COURSEWORK</div>
       </div>
       <div class="sheet-grid">
-        <img class="single-img" src="img9_steam_table.png" alt="Non-ideal Brayton cycle analysis results table">
+        <img class="single-img table" src="img9_steam_table.png" alt="Non-ideal Brayton cycle analysis results table">
         <div>
           <div class="specs">
             <div><span class="k">COURSE</span><span class="v">ME 300</span></div>
@@ -293,18 +331,18 @@
       </div>
     </article>
 
-    <article class="sheet" id="s07">
+    <article class="sheet" id="s08">
       <div class="sheet-head">
         <div>
-          <div class="sheet-no">SHEET 07 / 08</div>
+          <div class="sheet-no">SHEET 08 / 09</div>
           <h2>Phone Stand — CAD Iteration</h2>
         </div>
         <div class="status-tag">STATUS: COMPLETE</div>
       </div>
       <div class="sheet-grid">
         <div class="img-gallery">
-          <img src="img10_phonestand_cad.png" alt="Early CAD iteration of the phone stand">
-          <img src="img11_phonestand_render.png" alt="Final CAD render of the phone stand">
+          <img class="square" src="img10_phonestand_cad.png" alt="Early CAD iteration of the phone stand">
+          <img class="square" src="img11_phonestand_render.png" alt="Final CAD render of the phone stand">
         </div>
         <div>
           <div class="specs">
@@ -315,24 +353,23 @@
       </div>
     </article>
 
-    <article class="sheet" id="s08">
+    <article class="sheet" id="s09">
       <div class="sheet-head">
         <div>
-          <div class="sheet-no">SHEET 08 / 08</div>
-          <h2>Paradigm Consulting Engineers — MEP Internship</h2>
+          <div class="sheet-no">SHEET 09 / 09</div>
+          <h2>SOLIDWORKS Design Associate (CSWA)</h2>
         </div>
-        <div class="status-tag">STATUS: COMPLETE</div>
+        <div class="status-tag">STATUS: CERTIFIED</div>
       </div>
       <div class="sheet-grid">
-        <div class="img-slot">IMAGE — HVAC drawing set / office photo<br>(drop photo here)</div>
+        <img class="single-img contain-light" src="img12_cswa_certificate.png" alt="CSWA certificate issued by Dassault Systèmes">
         <div>
           <div class="specs">
-            <div><span class="k">ROLE</span><span class="v">Mechanical Engineering Intern</span></div>
-            <div><span class="k">DATES</span><span class="v">May – August 2026</span></div>
-            <div><span class="k">TOOLS</span><span class="v">AutoCAD, Bluebeam</span></div>
+            <div><span class="k">ISSUER</span><span class="v">Dassault Systèmes / SOLIDWORKS</span></div>
+            <div><span class="k">DATE</span><span class="v">September 10, 2026</span></div>
+            <div><span class="k">CREDENTIAL</span><span class="v">C-JHAZ5P8YQN</span></div>
           </div>
-          <p>Produced complete HVAC construction documents in AutoCAD for over 30 commercial, residential, and educational projects (15,000–30,000 SF), including duct layouts and VAV/FPB schedules sized and verified against static pressure targets.</p>
-          <p>Performed CFM balancing for VAV/FPB arrays, ventilation load calculations per ASHRAE 62.1, and electrical panel load scheduling across multiple concurrent projects — collaborating directly with licensed engineers and contributing to MEP drawing set reviews in Bluebeam.</p>
+          <p>Earned the Certified SOLIDWORKS Associate (CSWA) credential, validating core CAD competencies in part modeling, assemblies, and drawing documentation — the same modeling skill set behind the CAD and design-iteration work shown throughout this portfolio.</p>
         </div>
       </div>
     </article>
@@ -348,7 +385,7 @@
         <a class="btn" href="mailto:jjk6882@psu.edu">EMAIL</a>
         <a class="btn" href="https://www.linkedin.com/in/julian-kalligonis-me/" target="_blank" rel="noopener">LINKEDIN</a>
       </div>
-      <div class="rev">SHEET SET: JK-PORTFOLIO-2026 &nbsp;·&nbsp; 7 SHEETS &nbsp;·&nbsp; REV 2026.09</div>
+      <div class="rev">SHEET SET: JK-PORTFOLIO-2026 &nbsp;·&nbsp; 9 SHEETS &nbsp;·&nbsp; REV 2026.09</div>
     </div>
   </footer>
 
