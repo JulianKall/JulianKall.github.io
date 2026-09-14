@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julian Kalligonis — Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1B2D;
+    --navy-deep:#0A1420;
+    --line:#E8EDF2;
+    --muted:#6C87A3;
+    --amber:#D68A3C;
+    --grid: rgba(232,237,242,0.06);
+    --hair: rgba(232,237,242,0.16);
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      linear-gradient(var(--grid) 1px, transparent 1px) 0 0/40px 40px,
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0/40px 40px,
+      var(--navy);
+    color:var(--line);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  ::selection{background:var(--amber); color:var(--navy-deep);}
+  :focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+  .prose{max-width:62ch;}
+
+  /* corner crop marks */
+  .sheet{position:relative; border:1px solid var(--hair); padding:56px 40px; margin-bottom:2px;}
+  .sheet::before,.sheet::after,
+  .sheet .c-tl,.sheet .c-br{content:''; position:absolute; width:14px; height:14px; }
+  .sheet::before{top:-1px; left:-1px; border-top:2px solid var(--amber); border-left:2px solid var(--amber);}
+  .sheet::after{bottom:-1px; right:-1px; border-bottom:2px solid var(--amber); border-right:2px solid var(--amber);}
+
+  /* ---------- HERO ---------- */
+  header.hero{padding:80px 0 64px;}
+  .titleblock{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px; border-bottom:1px solid var(--hair); padding-bottom:24px; margin-bottom:40px;}
+  .titleblock .name{font-family:var(--mono); font-size:clamp(28px,4vw,42px); font-weight:600; letter-spacing:-0.01em;}
+  .titleblock .meta{font-family:var(--mono); font-size:13px; color:var(--muted); text-align:right; line-height:1.9;}
+  .role{font-size:19px; color:var(--line); max-width:56ch; margin-bottom:28px;}
+  .role strong{color:var(--line); font-weight:600;}
+  .stamp-row{display:flex; gap:10px; flex-wrap:wrap;}
+  .stamp{font-family:var(--mono); font-size:11.5px; letter-spacing:0.02em; border:1px solid var(--hair); color:var(--muted); padding:6px 10px;}
+
+  /* ---------- INDEX ---------- */
+  nav.index{padding:0 0 64px;}
+  nav.index .label{font-family:var(--mono); font-size:12px; color:var(--muted); margin-bottom:14px;}
+  .index-list{border-top:1px solid var(--hair);}
+  .index-list a{
+    display:flex; align-items:baseline; gap:18px;
+    padding:14px 0; border-bottom:1px solid var(--hair);
+    text-decoration:none; font-family:var(--sans); font-size:16px; color:var(--line);
+    transition:color .15s ease;
+  }
+  .index-list a:hover, .index-list a:focus-visible{color:var(--amber);}
+  .index-list .num{font-family:var(--mono); font-size:13px; color:var(--muted); width:34px; flex-shrink:0;}
+  .index-list .status{margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); white-space:nowrap;}
+
+  /* ---------- PROJECT SHEETS ---------- */
+  section.sheets{padding-bottom:40px;}
+  .sheet .sheet-head{display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:28px;}
+  .sheet-head .sheet-no{font-family:var(--mono); font-size:13px; color:var(--amber);}
+  .sheet-head h2{font-family:var(--sans); font-weight:600; font-size:26px; letter-spacing:-0.01em;}
+  .sheet-head .status-tag{font-family:var(--mono); font-size:11px; color:var(--muted); border:1px solid var(--hair); padding:5px 9px; white-space:nowrap;}
+
+  .sheet-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:start;}
+  @media (max-width:760px){.sheet-grid{grid-template-columns:1fr;}}
+
+  .img-slot{
+    aspect-ratio:4/3; border:1px dashed var(--hair);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:12px; color:var(--muted);
+    text-align:center; padding:20px; background:var(--navy-deep);
+  }
+  .img-gallery{display:grid; grid-template-columns:repeat(2,1fr); gap:8px;}
+  .img-gallery img{width:100%; height:100%; aspect-ratio:4/3; object-fit:cover; display:block; border:1px solid var(--hair); background:var(--navy-deep);}
+  .img-gallery .span-2{grid-column:1/-1;}
+  .single-img{width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border:1px solid var(--hair); background:var(--navy-deep);}
+
+  .specs{font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-bottom:18px;}
+  .specs div{display:flex; gap:10px; padding:5px 0; border-bottom:1px solid var(--grid);}
+  .specs span.k{width:70px; flex-shrink:0; color:var(--muted);}
+  .specs span.v{color:var(--line);}
+
+  .sheet p{margin-bottom:14px; font-size:15.5px; color:#CBD6E0;}
+  .sheet p:last-child{margin-bottom:0;}
+  .sheet .note{font-family:var(--mono); font-size:12px; color:var(--amber); border-left:2px solid var(--amber); padding-left:12px; margin-top:16px;}
+
+  /* ---------- CONTACT / TITLEBLOCK FOOTER ---------- */
+  footer{padding:64px 0 80px;}
+  .contact-sheet{padding:44px 40px;}
+  .contact-sheet h2{font-family:var(--sans); font-size:24px; font-weight:600; margin-bottom:10px;}
+  .contact-sheet p{color:var(--muted); margin-bottom:28px; max-width:56ch;}
+  .contact-grid{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:13px; padding:12px 18px; border:1px solid var(--hair);
+    text-decoration:none; color:var(--line); transition:all .15s ease; letter-spacing:0.01em;
+  }
+  .btn:hover, .btn:focus-visible{border-color:var(--amber); color:var(--amber);}
+  .btn.primary{border-color:var(--amber); color:var(--amber);}
+  .btn.primary:hover{background:var(--amber); color:var(--navy-deep);}
+  .rev{font-family:var(--mono); font-size:11px; color:var(--muted); margin-top:40px; padding-top:20px; border-top:1px solid var(--hair);}
+
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="titleblock">
+      <div class="name">JULIAN KALLIGONIS</div>
+      <div class="meta">
+        DRAWN BY: J. KALLIGONIS<br>
+        REV: 2026.09 &nbsp;·&nbsp; STATE COLLEGE, PA
+      </div>
+    </div>
+    <p class="role">Mechanical engineering undergraduate at Penn State (Class of 2028), building toward <strong>aerospace and defense engineering</strong> roles — structures, propulsion, and systems work grounded in hands-on fabrication and test.</p>
+    <div class="stamp-row">
+      <span class="stamp">MECHANICAL ENGINEERING · PENN STATE</span>
+      <span class="stamp">CLEARANCE-ELIGIBLE (U.S. CITIZEN)</span>
+      <span class="stamp">DEAN'S LIST</span>
+    </div>
+  </header>
+
+  <nav class="index">
+    <div class="label">SHEET INDEX</div>
+    <div class="index-list">
+      <a href="#s01"><span class="num">01</span> ASME Battle Bots — Weapon System FEA <span class="status">COMPLETE</span></a>
+      <a href="#s02"><span class="num">02</span> IREC Structures — Spaceport America Cup <span class="status">FLOWN · RUD</span></a>
+      <a href="#s03"><span class="num">03</span> Level 1 High-Power Rocketry Certification <span class="status">CERT PENDING</span></a>
+      <a href="#s04"><span class="num">04</span> 5" FPV Drone — Independent Build <span class="status">IN PROGRESS</span></a>
+      <a href="#s05"><span class="num">05</span> ASME VTOL Aircraft <span class="status">SCOPING · LEAD</span></a>
+      <a href="#s06"><span class="num">06</span> West Campus Steam Plant — Brayton Cycle Analysis <span class="status">COURSEWORK</span></a>
+      <a href="#s07"><span class="num">07</span> Phone Stand — CAD Iteration <span class="status">COMPLETE</span></a>
+      <a href="#s08"><span class="num">08</span> Paradigm Consulting Engineers — MEP Internship <span class="status">COMPLETE</span></a>
+    </div>
+  </nav>
+
+  <section class="sheets">
+
+    <article class="sheet" id="s01">
+      <div class="sheet-head">
+        <div>
+          <div class="sheet-no">SHEET 01 / 08</div>
+          <h2>ASME Battle Bots — Weapon System FEA</h2>
+        </div>
+        <div class="status-tag">STATUS: COMPLETE</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="img-gallery">
+          <img src="img1_battlebots_fea.png" alt="FEA stress plot of the weapon blade assembly">
+          <img src="img2_battlebots_event.png" alt="Battle Bots match at the competition showcase">
+          <img class="span-2" src="img3_battlebots_cad.png" alt="CAD render of the weapon blade assembly">
+        </div>
+        <div>
+          <div class="specs">
+            <div><span class="k">SCOPE</span><span class="v">Weapon system structural design</span></div>
+            <div><span class="k">METHOD</span><span class="v">Finite element analysis</span></div>
+            <div><span class="k">TEAM</span><span class="v">ASME Battle Bots, Penn State</span></div>
+            <div><span class="k">RESULT</span><span class="v">2nd Place & People's Choice Award</span></div>
+          </div>
+          <p>Designed the weapon system for a competition combat robot machined from AR500 steel, running 14 CAD design iterations and multiple FEA simulations to cut internal stress in the blade by over 50%.</p>
+          <p>Presented the FEA-driven design and stress analysis to Lockheed Martin and TE Connectivity engineers at the project showcase.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="sheet" id="s02">
+      <div class="sheet-head">
+        <div>
+          <div class="sheet-no">SHEET 02 / 08</div>
+          <h2>IREC Structures — Spaceport America Cup</h2>
+        </div>
+        <div class="status-tag">STATUS: FLOWN · RUD</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="img-gallery">
+          <img src="img4_irec_rocket.png" alt="IREC rocket in flight showing the fin assembly">
+          <img src="img5_irec_parts.png" alt="Composite airframe components in the shop">
+        </div>
+        <div>
+          <div class="specs">
+            <div><span class="k">SCOPE</span><span class="v">Composite airframe fabrication</span></div>
+            <div><span class="k">EVENT</span><span class="v">Spaceport America Cup (IREC)</span></div>
+            <div><span class="k">ROLE</span><span class="v">Structures team</span></div>
+          </div>
+          <p>Contributed to fabrication of the composite airframe for the team's competition rocket. During flight, the vehicle suffered a rapid unplanned disassembly (RUD) driven by aeroelastic divergence in the fin assembly.</p>
+          <p>This is presented as a failure-analysis story: the divergence pointed to a fin-stiffness margin that wasn't sized conservatively enough for the flight regime — a concrete, technical lesson in structural margins under aerodynamic load, not just fabrication.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="sheet" id="s03">
+      <div class="sheet-head">
+        <div>
+          <div class="sheet-no">SHEET 03 / 08</div>
+          <h2>Level 1 High-Power Rocketry Certification</h2>
+        </div>
+        <div class="status-tag">STATUS: CERT PENDING</div>
+      </div>
+      <div class="sheet-grid">
+        <img class="single-img" src="img6_l1_rocket.png" alt="Assembled Level 1 high-power rocket">
+        <div>
+          <div class="specs">
+            <div><span class="k">SCOPE</span><span class="v">L1 high-power rocketry design/build</span></div>
+            <div><span class="k">VEHICLE</span><span class="v">36 in, 3 in dia., H-class</span></div>
+            <div><span class="k">STATUS</span><span class="v">Design and build complete</span></div>
+          </div>
+          <p>Designed a 36", 3"-diameter H-class rocket in OpenRocket, running stability (CG/CP) and performance simulations. Modeled and 3D printed a custom PLA nose cone, and generated DXF files from CAD to laser-cut precision wooden fins.</p>
+          <p>Assembled and integrated the full flight vehicle. Design and fabrication are complete; certification flight has not yet taken place.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="sheet" id="s04">
+      <div class="sheet-head">
+        <div>
+          <div class="sheet-no">SHEET 04 / 08</div>
+          <h2>5" FPV Drone — Independent Build</h2>
+        </div>
+        <div class="status-tag">STATUS: IN PROGRESS</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="img-gallery">
+          <img src="img7_fpv_closeup.png" alt="Close-up of the FPV quad's flight controller stack and camera">
+          <img src="img8_fpv_full.png" alt="Assembled FPV quad with transmitter and goggles">
+        </div>
+        <div>
+          <div class="specs">
+            <div><span class="k">SCOPE</span><span class="v">5" freestyle FPV quad, independent build</span></div>
+            <div><span class="k">SYSTEMS</span><span class="v">Frame, FC/ESC stack, VTX, wiring</span></div>
+          </div>
+          <p>Independently designed, built, and tuned a 5" 6S FPV quadcopter — integrating flight controller, ESCs, and brushless motors through hand-soldered power connections, with firmware configured in Betaflight.</p>
+          <div class="note">NOTE: diagnosed a VTX reliability issue traced to a missing antenna; sourced a replacement unit under warranty.</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="sheet" id="s05">
+      <div class="sheet-head">
+        <div>
+          <div class="sheet-no">SHEET 05 / 08</div>
+          <h2>ASME VTOL Aircraft</h2>
+        </div>
+        <div class="status-tag">STATUS: SCOPING · LEAD</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="img-slot">IMAGE — concept render / team photo<br>(drop photo here)</div>
+        <div>
+          <div class="specs">
+            <div><span class="k">ROLE</span><span class="v">Project lead, 2026–2027</span></div>
+            <div><span class="k">PHASE</span><span class="v">Scope and timeline definition</span></div>
+            <div><span class="k">BUDGET</span><span class="v">$1,500, across 4 subteams</span></div>
+          </div>
+          <p>Leading a team of engineering students to research, design, manufacture, and automate a VTOL aircraft for the 2026–2027 cycle — managing a $1,500 project budget and coordinating subteams spanning airframe, propulsion, avionics, and payload systems.</p>
+          <p>Current work is early-phase: defining project scope and building out the development timeline ahead of design work, alongside a personal drone build in preparation for the September start.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="sheet" id="s06">
+      <div class="sheet-head">
+        <div>
+          <div class="sheet-no">SHEET 06 / 08</div>
+          <h2>West Campus Steam Plant — Brayton Cycle Analysis</h2>
+        </div>
+        <div class="status-tag">STATUS: COURSEWORK</div>
+      </div>
+      <div class="sheet-grid">
+        <img class="single-img" src="img9_steam_table.png" alt="Non-ideal Brayton cycle analysis results table">
+        <div>
+          <div class="specs">
+            <div><span class="k">COURSE</span><span class="v">ME 300</span></div>
+            <div><span class="k">SCOPE</span><span class="v">Thermodynamic cycle analysis</span></div>
+          </div>
+          <p>Analyzed Penn State's West Campus Steam Plant using Brayton cycle thermodynamics as part of ME 300 coursework, evaluating cycle performance against real plant parameters.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="sheet" id="s07">
+      <div class="sheet-head">
+        <div>
+          <div class="sheet-no">SHEET 07 / 08</div>
+          <h2>Phone Stand — CAD Iteration</h2>
+        </div>
+        <div class="status-tag">STATUS: COMPLETE</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="img-gallery">
+          <img src="img10_phonestand_cad.png" alt="Early CAD iteration of the phone stand">
+          <img src="img11_phonestand_render.png" alt="Final CAD render of the phone stand">
+        </div>
+        <div>
+          <div class="specs">
+            <div><span class="k">SCOPE</span><span class="v">Parametric CAD design iteration</span></div>
+          </div>
+          <p>Designed and iterated a phone stand through successive CAD revisions, refining geometry and fit through multiple design passes.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="sheet" id="s08">
+      <div class="sheet-head">
+        <div>
+          <div class="sheet-no">SHEET 08 / 08</div>
+          <h2>Paradigm Consulting Engineers — MEP Internship</h2>
+        </div>
+        <div class="status-tag">STATUS: COMPLETE</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="img-slot">IMAGE — HVAC drawing set / office photo<br>(drop photo here)</div>
+        <div>
+          <div class="specs">
+            <div><span class="k">ROLE</span><span class="v">Mechanical Engineering Intern</span></div>
+            <div><span class="k">DATES</span><span class="v">May – August 2026</span></div>
+            <div><span class="k">TOOLS</span><span class="v">AutoCAD, Bluebeam</span></div>
+          </div>
+          <p>Produced complete HVAC construction documents in AutoCAD for over 30 commercial, residential, and educational projects (15,000–30,000 SF), including duct layouts and VAV/FPB schedules sized and verified against static pressure targets.</p>
+          <p>Performed CFM balancing for VAV/FPB arrays, ventilation load calculations per ASHRAE 62.1, and electrical panel load scheduling across multiple concurrent projects — collaborating directly with licensed engineers and contributing to MEP drawing set reviews in Bluebeam.</p>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <footer>
+    <div class="sheet contact-sheet">
+      <h2>Get in touch</h2>
+      <p>Open to aerospace and defense engineering internships and full-time roles. Reach out or download the full resume below.</p>
+      <div class="contact-grid">
+        <a class="btn primary" href="Julian_Kalligonis_Resume.pdf" target="_blank" rel="noopener" aria-label="Download resume">↓ DOWNLOAD RESUME</a>
+        <a class="btn" href="mailto:jjk6882@psu.edu">EMAIL</a>
+        <a class="btn" href="https://www.linkedin.com/in/julian-kalligonis-me/" target="_blank" rel="noopener">LINKEDIN</a>
+      </div>
+      <div class="rev">SHEET SET: JK-PORTFOLIO-2026 &nbsp;·&nbsp; 7 SHEETS &nbsp;·&nbsp; REV 2026.09</div>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
