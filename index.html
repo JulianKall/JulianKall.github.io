@@ -100,6 +100,7 @@
   .single-img{width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border:1px solid var(--hair); background:var(--navy-deep);}
   .single-img.portrait{aspect-ratio:3/4;}
   .single-img.tall{aspect-ratio:9/16;}
+  .single-img.square{aspect-ratio:1/1;}
   .single-img.wide{aspect-ratio:3/2;}
   .single-img.contain-light{aspect-ratio:4/3; object-fit:contain; background:var(--paper); padding:20px;}
   .single-img.table{aspect-ratio:3/1; object-fit:contain; background:var(--paper); padding:18px;}
@@ -170,7 +171,8 @@
       <a href="#s06"><span class="num">06</span> 5" FPV Drone — Independent Build <span class="status">COMPLETE</span></a>
       <a href="#s07"><span class="num">07</span> West Campus Steam Plant — Brayton Cycle Analysis <span class="status">COURSEWORK</span></a>
       <a href="#s08"><span class="num">08</span> Phone Stand — CAD Iteration <span class="status">COMPLETE</span></a>
-      <a href="#s09"><span class="num">09</span> SOLIDWORKS Design Associate (CSWA) <span class="status">CERTIFIED</span></a>
+      <a href="#s09"><span class="num">09</span> Speedcubing Timer &amp; Stats Site <span class="status">LIVE</span></a>
+      <a href="#s10"><span class="num">10</span> SOLIDWORKS Design Associate (CSWA) <span class="status">CERTIFIED</span></a>
     </div>
   </nav>
 
@@ -179,7 +181,7 @@
     <article class="sheet" id="s01">
       <div class="sheet-head">
         <div>
-          <div class="sheet-no">SHEET 01 / 09</div>
+          <div class="sheet-no">SHEET 01 / 10</div>
           <h2>ASME Battle Bots — Weapon System</h2>
         </div>
         <div class="status-tag">STATUS: COMPLETE</div>
@@ -206,7 +208,7 @@
     <article class="sheet" id="s02">
       <div class="sheet-head">
         <div>
-          <div class="sheet-no">SHEET 02 / 09</div>
+          <div class="sheet-no">SHEET 02 / 10</div>
           <h2>ASME VTOL Aircraft</h2>
         </div>
         <div class="status-tag">STATUS: SCOPING · LEAD</div>
@@ -228,7 +230,7 @@
     <article class="sheet" id="s03">
       <div class="sheet-head">
         <div>
-          <div class="sheet-no">SHEET 03 / 09</div>
+          <div class="sheet-no">SHEET 03 / 10</div>
           <h2>IREC Structures — Spaceport America Cup</h2>
         </div>
         <div class="status-tag">STATUS: FLOWN · RUD</div>
@@ -253,7 +255,7 @@
     <article class="sheet" id="s04">
       <div class="sheet-head">
         <div>
-          <div class="sheet-no">SHEET 04 / 09</div>
+          <div class="sheet-no">SHEET 04 / 10</div>
           <h2>Level 1 High-Power Rocketry Certification</h2>
         </div>
         <div class="status-tag">STATUS: CERT PENDING</div>
@@ -275,7 +277,7 @@
     <article class="sheet" id="s05">
       <div class="sheet-head">
         <div>
-          <div class="sheet-no">SHEET 05 / 09</div>
+          <div class="sheet-no">SHEET 05 / 10</div>
           <h2>Paradigm Consulting Engineers — MEP Internship</h2>
         </div>
         <div class="status-tag">STATUS: COMPLETE</div>
@@ -297,7 +299,7 @@
     <article class="sheet" id="s06">
       <div class="sheet-head">
         <div>
-          <div class="sheet-no">SHEET 06 / 09</div>
+          <div class="sheet-no">SHEET 06 / 10</div>
           <h2>5" FPV Drone — Independent Build</h2>
         </div>
         <div class="status-tag">STATUS: COMPLETE</div>
@@ -321,7 +323,7 @@
     <article class="sheet" id="s07">
       <div class="sheet-head">
         <div>
-          <div class="sheet-no">SHEET 07 / 09</div>
+          <div class="sheet-no">SHEET 07 / 10</div>
           <h2>West Campus Steam Plant — Brayton Cycle Analysis</h2>
         </div>
         <div class="status-tag">STATUS: COURSEWORK</div>
@@ -341,7 +343,7 @@
     <article class="sheet" id="s08">
       <div class="sheet-head">
         <div>
-          <div class="sheet-no">SHEET 08 / 09</div>
+          <div class="sheet-no">SHEET 08 / 10</div>
           <h2>Phone Stand — CAD Iteration</h2>
         </div>
         <div class="status-tag">STATUS: COMPLETE</div>
@@ -363,7 +365,34 @@
     <article class="sheet" id="s09">
       <div class="sheet-head">
         <div>
-          <div class="sheet-no">SHEET 09 / 09</div>
+          <div class="sheet-no">SHEET 09 / 10</div>
+          <h2>Speedcubing Timer &amp; Stats Site</h2>
+        </div>
+        <div class="status-tag">STATUS: LIVE</div>
+      </div>
+      <div class="sheet-grid">
+        <img class="single-img square" src="img15_cube_timer.png" alt="Screenshot of the speedcubing timer showing the scramble, stats panel, and solve chart">
+        <div>
+          <div class="specs">
+            <div><span class="k">SCOPE</span><span class="v">Solo build, single-page web app</span></div>
+            <div><span class="k">STACK</span><span class="v">HTML, CSS, JavaScript, Chart.js</span></div>
+            <div><span class="k">HOSTED</span><span class="v">GitHub Pages</span></div>
+            <div><span class="k">BUILT</span><span class="v">AI-assisted, with Claude</span></div>
+          </div>
+          <p>Built a speedcubing timer and stats tracker for logging my own 3x3 solves. It runs a hold-to-start timer with optional 15-second WCA-style inspection, generates a fresh 20-move scramble after every solve, and supports +2 and DNF penalties.</p>
+          <p>The stats panel tracks mean, median, best, worst, standard deviation, Ao5, best Ao5, and Ao12. Three charts plot every solve in order with a rolling Ao5, the distribution of my times with a fitted bell curve, and my latest solve against modeled beginner and WCA-competitor curves.</p>
+          <p>Solves can be entered manually, exported and imported as JSON, and protected from accidental spacebar presses with a lock toggle.</p>
+          <p>I built it by describing what I wanted to Claude, reviewing the code it produced, and deploying it myself on GitHub Pages. I kept iterating from real use: after accidental spacebar presses started timers, I asked for the lock toggle, and I debugged a deployment where the new upload saved under the wrong filename and never replaced the live page.</p>
+          <div class="note">NOTE: the comparison curves are rough statistical models, not official WCA data.</div>
+          <div style="margin-top:20px;"><a class="btn primary" href="https://juliankall.github.io/Cube-Timer/" target="_blank" rel="noopener">LAUNCH TIMER →</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="sheet" id="s10">
+      <div class="sheet-head">
+        <div>
+          <div class="sheet-no">SHEET 10 / 10</div>
           <h2>SOLIDWORKS Design Associate (CSWA)</h2>
         </div>
         <div class="status-tag">STATUS: CERTIFIED</div>
@@ -392,7 +421,7 @@
         <a class="btn" href="mailto:jjk6882@psu.edu">EMAIL</a>
         <a class="btn" href="https://www.linkedin.com/in/julian-kalligonis-me/" target="_blank" rel="noopener">LINKEDIN</a>
       </div>
-      <div class="rev">SHEET SET: JK-PORTFOLIO-2026 &nbsp;·&nbsp; 9 SHEETS &nbsp;·&nbsp; REV 2026.09</div>
+      <div class="rev">SHEET SET: JK-PORTFOLIO-2026 &nbsp;·&nbsp; 10 SHEETS &nbsp;·&nbsp; REV 2026.09</div>
     </div>
   </footer>
 
